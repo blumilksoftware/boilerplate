@@ -36,7 +36,7 @@ services:
 
   database:
     image: mysql:8.0
-    container_name: k1-db-dev
+    container_name: boilerplate-db-dev
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - MYSQL_DATABASE=${DB_DATABASE}
