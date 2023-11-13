@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: blumilksoftware/action-pr-title@v1.2.0
         with:
-          regex: '^(ITPM\-\d+ )?- .+'
+          regex: '^(ExampleApp\-\d+ )?- .+'

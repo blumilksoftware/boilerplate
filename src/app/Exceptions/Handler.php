@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ITPM\Exceptions;
+namespace ExampleApp\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 

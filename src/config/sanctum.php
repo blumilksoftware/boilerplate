@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use ITPM\Http\Middleware\EncryptCookies;
-use ITPM\Http\Middleware\VerifyCsrfToken;
+use ExampleApp\Http\Middleware\EncryptCookies;
+use ExampleApp\Http\Middleware\VerifyCsrfToken;
 use Laravel\Sanctum\Sanctum;
 
 return [

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ITPM\Http\Middleware;
+namespace ExampleApp\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;

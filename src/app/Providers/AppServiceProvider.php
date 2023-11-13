@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ITPM\Providers;
+namespace ExampleApp\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

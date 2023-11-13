@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ITPM\Http;
+namespace ExampleApp\Http;
 
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
@@ -19,15 +19,15 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use ITPM\Http\Middleware\Authenticate;
-use ITPM\Http\Middleware\EncryptCookies;
-use ITPM\Http\Middleware\HandleInertiaRequests;
-use ITPM\Http\Middleware\PreventRequestsDuringMaintenance;
-use ITPM\Http\Middleware\RedirectIfAuthenticated;
-use ITPM\Http\Middleware\TrimStrings;
-use ITPM\Http\Middleware\TrustProxies;
-use ITPM\Http\Middleware\ValidateSignature;
-use ITPM\Http\Middleware\VerifyCsrfToken;
+use ExampleApp\Http\Middleware\Authenticate;
+use ExampleApp\Http\Middleware\EncryptCookies;
+use ExampleApp\Http\Middleware\HandleInertiaRequests;
+use ExampleApp\Http\Middleware\PreventRequestsDuringMaintenance;
+use ExampleApp\Http\Middleware\RedirectIfAuthenticated;
+use ExampleApp\Http\Middleware\TrimStrings;
+use ExampleApp\Http\Middleware\TrustProxies;
+use ExampleApp\Http\Middleware\ValidateSignature;
+use ExampleApp\Http\Middleware\VerifyCsrfToken;
 
 class Kernel extends HttpKernel
 {

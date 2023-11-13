@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ITPM\Http\Middleware;
+namespace ExampleApp\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustHosts as Middleware;
 

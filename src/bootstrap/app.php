@@ -6,9 +6,9 @@ use Illuminate\Contracts\Console\Kernel as ConsoleKernelContract;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
 use Illuminate\Foundation\Application;
-use ITPM\Console\Kernel as ConsoleKernel;
-use ITPM\Exceptions\Handler;
-use ITPM\Http\Kernel as HttpKernel;
+use ExampleApp\Console\Kernel as ConsoleKernel;
+use ExampleApp\Exceptions\Handler;
+use ExampleApp\Http\Kernel as HttpKernel;
 
 $app = new Application($_ENV["APP_BASE_PATH"] ?? dirname(__DIR__));
 

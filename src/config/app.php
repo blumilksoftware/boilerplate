@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 $providers = ServiceProvider::defaultProviders()->merge([
-    ITPM\Providers\AppServiceProvider::class,
-    ITPM\Providers\EventServiceProvider::class,
-    ITPM\Providers\RouteServiceProvider::class,
+    ExampleApp\Providers\AppServiceProvider::class,
+    ExampleApp\Providers\EventServiceProvider::class,
+    ExampleApp\Providers\RouteServiceProvider::class,
 ])->toArray();
 
 return [

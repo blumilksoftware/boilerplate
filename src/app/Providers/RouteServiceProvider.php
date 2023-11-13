@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ITPM\Providers;
+namespace ExampleApp\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

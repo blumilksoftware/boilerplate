@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace ITPM\Http\Middleware;
+namespace ExampleApp\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use ITPM\Providers\RouteServiceProvider;
+use ExampleApp\Providers\RouteServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ITPM\Models\User;
+use ExampleApp\Models\User;
 
 return [
     "defaults" => [

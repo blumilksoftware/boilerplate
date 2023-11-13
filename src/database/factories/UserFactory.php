@@ -6,7 +6,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use ITPM\Models\User;
+use ExampleApp\Models\User;
 
 /**
  * @extends Factory<User>
