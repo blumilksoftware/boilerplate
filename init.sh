@@ -16,7 +16,7 @@ TARGET_DIR=$(pwd)
 TEMP_DIR=$(mktemp -d)
 
 # Clone the repository into a temporary directory
-git clone "https://github.com/blumilksoftware/boilerplate/tree/init" "$TEMP_DIR"
+git clone --branch init "https://github.com/blumilksoftware/boilerplate" "$TEMP_DIR"
 
 # Check if the clone was successful
 if [ $? -ne 0 ]; then
