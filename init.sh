@@ -1,27 +1,37 @@
 #!/bin/bash
 
 # Check if the correct number of arguments is provided
-if [ "$#" -ne 4 ]; then
-    echo "Usage: $0 source_directory target_directory old_string new_string"
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 new_string"
     exit 1
 fi
 
-# Assign arguments to variables for better readability
-SOURCE_DIR=$1
-TARGET_DIR=$2
-OLD_STRING=$3
-NEW_STRING=$4
+# Assign argument to variables for better readability
+NEW_STRING=$1
 
-# Create the target directory if it doesn't exist
-mkdir -p "$TARGET_DIR"
+# Current working directory
+TARGET_DIR=$(pwd)
 
-# Copy files from source to target directory
-shopt -s dotglob
-cp -r "$SOURCE_DIR"/* "$TARGET_DIR"/
-shopt -u dotglob
+# Temporary directory for cloning
+TEMP_DIR=$(mktemp -d)
+
+# Clone the repository into a temporary directory
+git clone "https://github.com/blumilksoftware/boilerplate/tree/init" "$TEMP_DIR"
+
+# Check if the clone was successful
+if [ $? -ne 0 ]; then
+    echo "Failed to clone the repository."
+    exit 1
+fi
+
+# Move the desired subdirectory to the target directory
+mv "$TEMP_DIR/src" "$TARGET_DIR"
+
+# Remove the temporary directory
+rm -rf "$TEMP_DIR"
 
 # Change the given string to a new string in all files in the target directory
 # This uses a loop to go through each file and sed to perform the string replacement
-find "$TARGET_DIR" -type f -exec sed -i "s/$OLD_STRING/$NEW_STRING/g" {} \;
+find "$TARGET_DIR" -type f -exec sed -i "s/ITPM/$NEW_STRING/g" {} \;
 
 echo "Operation completed."
