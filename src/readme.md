@@ -61,7 +61,7 @@ npm run lintf
 
 | service  | container name   | default host port               |
 |:---------|------------------|---------------------------------|
-| app      | itpm-app-dev     | [63851](http://localhost:63851) |
-| database | itpm-db-dev      | 63853                           |
-| redis    | itpm-redis-dev   | 63852                           |
-| mailpit  | itpm-mailpit-dev | 63854                           |
+| app      | example-app-app-dev     | [63851](http://localhost:63851) |
+| database | example-app-db-dev      | 63853                           |
+| redis    | example-app-redis-dev   | 63852                           |
+| mailpit  | example-app-mailpit-dev | 63854                           |

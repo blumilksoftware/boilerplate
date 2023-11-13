@@ -1,5 +1,5 @@
 {
-    "name": "itpm",
+    "name": "example-app",
     "private": true,
     "type": "module",
     "scripts": {

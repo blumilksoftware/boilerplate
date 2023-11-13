@@ -13,8 +13,8 @@ CURRENT_USER_ID = $(shell id --user)
 CURRENT_USER_GROUP_ID = $(shell id --group)
 CURRENT_DIR = $(shell pwd)
 
-DATABASE_USERNAME=itpm
-TEST_DATABASE_NAME=itpm-test
+DATABASE_USERNAME=example-app
+TEST_DATABASE_NAME=example-app-test
 
 init: check-env-file
 	@make build \

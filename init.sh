@@ -25,7 +25,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Move the desired subdirectory to the target directory
-mv "$TEMP_DIR/src" "$TARGET_DIR"
+mv "$TEMP_DIR/src/"* "$TARGET_DIR"
 
 # Remove the temporary directory
 rm -rf "$TEMP_DIR"

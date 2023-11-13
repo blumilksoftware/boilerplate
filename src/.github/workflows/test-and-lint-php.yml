@@ -21,8 +21,8 @@ jobs:
       pgsql:
         image: postgres:15.2-alpine3.17
         env:
-          POSTGRES_DB: itpm
-          POSTGRES_USER: itpm
+          POSTGRES_DB: example-app
+          POSTGRES_USER: example-app
           POSTGRES_PASSWORD: password
         # Set health checks to wait until postgres has started
         options: >-
