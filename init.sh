@@ -39,7 +39,7 @@ rm -rf "$TEMP_DIR"
 
 # Change the given string to a new string in all files in the target directory
 # This uses a loop to go through each file and sed to perform the string replacement
-find "$TARGET_DIR" -type f -exec sed -i "s/example-app/$NEW_STRING/g" {} \;
+find "$TARGET_DIR" -type f -exec sed -i "s/example-app/$APP_NAME/g" {} \;
 find "$TARGET_DIR" -type f -exec sed -i "s/ExampleApp/$NAMESPACE/g" {} \;
 
 echo "Operation completed."
