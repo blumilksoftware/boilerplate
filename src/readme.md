@@ -1,4 +1,4 @@
-## Itpm
+## ExampleApp
 ### Local development
 ```
 cp .env.example .env
@@ -7,7 +7,7 @@ make shell
   # inside container
   npm run dev
 ```
-Application will be running under [localhost:63851](localhost:63851) and [http://itpm.blumilk.localhost/](http://itpm.blumilk.localhost/) in Blumilk traefik environment. If you don't have a Blumilk traefik environment set up, follow the instructions in this [repository](https://github.com/blumilksoftware/environment).
+Application will be running under [localhost:63851](localhost:63851) and [http://example-app.blumilk.localhost/](http://example-app.blumilk.localhost/) in Blumilk traefik environment. If you don't have a Blumilk traefik environment set up, follow the instructions in this [repository](https://github.com/blumilksoftware/environment).
 
 
 ### Commands

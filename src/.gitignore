@@ -19,3 +19,5 @@ google-credentials.json
 .composer
 /public/build/
 supervisord.pid
+composer.lock
+package-lock.json
