@@ -1,46 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
-  <component name="ChangeListManager">
-    <list default="true" id="0b36c46b-d9f2-4fee-8f10-ae93ab6765bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/init.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.env.ci" beforeDir="false" afterPath="$PROJECT_DIR$/src/.env.ci" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/src/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.github/workflows/test-and-lint-php.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.github/workflows/test-and-lint-php.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/readme.md" afterDir="false" />
-    </list>
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/src/composer.json</pharConfigPath>
-    <execution />
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
+  <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/src/vendor/ramsey/uuid" />
       <path value="$PROJECT_DIR$/src/vendor/phpunit/php-file-iterator" />
@@ -163,60 +133,18 @@
       <path value="$PROJECT_DIR$/src/vendor/egulias/email-validator" />
     </include_path>
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2Y7Swg2NsKaE6b1erhpgcPx6NQp" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.2">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "init",
-    "last_opened_file_path": "/home/kamil/Publiczny/boilerplate",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/kamil/.local/share/JetBrains/Toolbox/apps/phpstorm/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/src/composer.json" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner configuration_file="$PROJECT_DIR$/src/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
-      <method v="2" />
-    </configuration>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/src/phpunit.xml" custom_loader_path="$PROJECT_DIR$/src/vendor/autoload.php" use_configuration_file="true" />
+    </phpunit_settings>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="0b36c46b-d9f2-4fee-8f10-ae93ab6765bb" name="Changes" comment="" />
-      <created>1699875366028</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1699875366028</updated>
-      <workItem from="1699875367045" duration="9306000" />
-      <workItem from="1699903640939" duration="21000" />
-      <workItem from="1699942314642" duration="2778000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
 </project>
