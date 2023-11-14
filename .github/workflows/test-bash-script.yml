@@ -9,16 +9,20 @@ jobs:
   test:
     name: Run Script
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: set branch name
+        run: echo "BRANCH_NAME=$GITHUB_REF_NAME" >> $GITHUB_ENV
+
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ env.BRANCH_NAME }}
 
       - name: Run Bash Script
         run: |
-          BRANCH_NAME=${GITHUB_BASE_REF##*/}
           mkdir example-project
           mv init.sh example-project/init.sh
           cd example-project
           chmod +x init.sh
-          ./init.sh "TestApp" "TestNamespace" "init" "12345" "23456" "34567" "45678"
+          ./init.sh "TestApp" "TestNamespace" "$BRANCH_NAME" "12345" "23456" "34567" "45678"
