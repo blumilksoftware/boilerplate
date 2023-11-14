@@ -16,7 +16,7 @@ jobs:
 
       - name: Run Bash Script
         run: |
-          BRANCH_NAME=${GITHUB_REF##*/}
+          BRANCH_NAME=${GITHUB_BASE_REF##*/}
           mkdir example-project
           mv init.sh example-project/init.sh
           cd example-project
