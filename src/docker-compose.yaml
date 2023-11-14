@@ -1,5 +1,3 @@
-version: "3.8"
-
 networks:
     example-app-dev:
         driver: bridge
@@ -51,7 +49,7 @@ services:
                 condition: service_healthy
 
     database:
-        image: postgres:15.2-alpine3.17
+        image: postgres:15.5-alpine3.18
         container_name: example-app-db-dev
         environment:
             - POSTGRES_USER=${DB_USERNAME}
@@ -72,7 +70,7 @@ services:
         restart: unless-stopped
 
     mailpit:
-      image: axllent/mailpit:v1.8.0
+      image: axllent/mailpit:v1.10.0
       container_name: example-app-mailpit-dev
       labels:
         - "traefik.enable=true"
@@ -96,7 +94,7 @@ services:
       restart: unless-stopped
 
     redis:
-        image: redis:7.0.11-alpine3.17
+        image: redis:7.2.3-alpine3.18
         container_name: example-app-redis-dev
         ports:
             - ${DOCKER_REDIS_HOST_PORT:-3852}:6379
