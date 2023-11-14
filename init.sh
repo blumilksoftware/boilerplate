@@ -4,7 +4,7 @@ set -e
 
 BLUE='\033[01;34m'
 RED='\033[0;31m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
 isValidAppNamespace() {
     local appName="$1"
@@ -20,7 +20,7 @@ isValidAppNamespace() {
     fi
 
     local len=${#appName}
-    if [ $len -lt 2 ] || [ $len -gt 20 ]; then
+    if [ "$len" -lt 2 ] || [ "$len" -gt 20 ]; then
         echo -e "${RED}Application namespace must be between 2 and 20 characters.${NC}"
         return 1
     fi
@@ -29,9 +29,9 @@ isValidAppNamespace() {
 }
 
 promptForInput() {
-    read -p "Enter the app name: " APP_NAME
-    read -p "Enter the namespace for the app (leave empty for default namespace 'App'): " APP_NAMESPACE
-    read -p "Enter the branch name (leave empty for default branch): " BRANCH_NAME
+    read -r -p "Enter the app name: " APP_NAME
+    read -r -p "Enter the namespace for the app (leave empty for default namespace 'App'): " APP_NAMESPACE
+    read -r -p "Enter the branch name (leave empty for default branch): " BRANCH_NAME
     APP_NAMESPACE=${APP_NAMESPACE:-App}
 }
 
