@@ -4,7 +4,7 @@ set -e
 
 BLUE='\033[01;34m'
 RED='\033[0;31m'
-NC='\033[0m'
+NC='\033[0m' # No Color
 
 isValidAppNamespace() {
     local appName="$1"
@@ -30,9 +30,8 @@ isValidAppNamespace() {
 
 promptForInput() {
     read -p "Enter the app name: " APP_NAME
-    read -p "Enter the namespace for the app (leave empty for default namespace 'App'): " APP_NAMESPACE
+    read -p "Enter the namespace for the app: " APP_NAMESPACE
     read -p "Enter the branch name (leave empty for default branch): " BRANCH_NAME
-    APP_NAMESPACE=${APP_NAMESPACE:-App}
 }
 
 echo -e "${BLUE}
@@ -44,7 +43,15 @@ echo -e "${BLUE}
 ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝╚══════╝╚═╝  ╚═╝    ╚═════╝  ╚═════╝ ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
 ${NC}
 "
-promptForInput
+
+if [ "$#" -lt 2 ]; then
+    echo "Arguments missing or incomplete. Please follow the prompts."
+    promptForInput
+else
+    APP_NAME=$1
+    APP_NAMESPACE=$2
+    BRANCH_NAME=${3:-}
+fi
 
 if ! isValidAppNamespace "$APP_NAMESPACE"; then
     exit 1
