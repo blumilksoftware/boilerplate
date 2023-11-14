@@ -44,15 +44,7 @@ echo -e "${BLUE}
 ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝╚══════╝╚═╝  ╚═╝    ╚═════╝  ╚═════╝ ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
 ${NC}
 "
-
-if [ "$#" -lt 1 ]; then
-    echo "Arguments missing or incomplete. Please follow the prompts."
-    promptForInput
-else
-    APP_NAME=$1
-    APP_NAMESPACE=${2:-App}
-    BRANCH_NAME=${3:-}
-fi
+promptForInput
 
 if ! isValidAppNamespace "$APP_NAMESPACE"; then
     exit 1
