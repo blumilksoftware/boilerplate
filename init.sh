@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Application name validation function
 isValidAppNamespace() {
