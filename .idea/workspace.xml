@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b36c46b-d9f2-4fee-8f10-ae93ab6765bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/init.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.env.ci" beforeDir="false" afterPath="$PROJECT_DIR$/src/.env.ci" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/src/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.github/workflows/test-and-lint-php.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/.github/workflows/test-and-lint-php.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +199,7 @@
       <updated>1699875366028</updated>
       <workItem from="1699875367045" duration="9306000" />
       <workItem from="1699903640939" duration="21000" />
-      <workItem from="1699942314642" duration="2778000" />
+      <workItem from="1699942314642" duration="3001000" />
     </task>
     <servers />
   </component>
