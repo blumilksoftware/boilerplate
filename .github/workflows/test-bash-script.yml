@@ -15,4 +15,6 @@ jobs:
         run: |
           chmod +x ./init.sh
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          mkdir example-project
+          cd example-project
           ./init.sh "TestApp" "TestNamespace" "$BRANCH_NAME" "12345" "23456" "34567" "45678"
