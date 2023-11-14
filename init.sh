@@ -14,7 +14,7 @@ isValidAppNamespace() {
         return 1
     fi
 
-    if ! [[ $appName =~ ^[A-Z][a-zA-Z0-9]*$ ]]; then
+    if ! [[ $appName =~ ^[A-Z][a-zA-Z0-9\\]*$ ]]; then
         echo -e "${RED}Application namespace must start with an uppercase letter and be alphanumeric.${NC}"
         return 1
     fi
@@ -77,7 +77,8 @@ shopt -u dotglob
 
 rm -rf "$TEMP_DIR"
 
+ESCAPED_APP_NAMESPACE=$(printf '%s\n' "$APP_NAMESPACE" | sed -e 's/[\/&]/\\&/g')
 find "$TARGET_DIR" -type f -exec sed -i "s/example-app/$APP_NAME/g" {} \;
-find "$TARGET_DIR" -type f -exec sed -i "s/ExampleApp/$APP_NAMESPACE/g" {} \;
+find "$TARGET_DIR" -type f -exec sed -i "s/ExampleApp/$ESCAPED_APP_NAMESPACE/g" {} \;
 
 echo "Boilerplate copied."
