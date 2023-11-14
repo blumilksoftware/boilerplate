@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Application name validation function
 isValidAppNamespace() {
@@ -27,6 +27,8 @@ isValidAppNamespace() {
 promptForInput() {
     read -p "Enter the app name: " APP_NAME
     read -p "Enter the namespace for the app: " APP_NAMESPACE
+    read -p "Enter the branch name (leave empty for default branch): " BRANCH_NAME
+
 }
 
 # Check if the correct number of arguments is provided
@@ -37,6 +39,7 @@ else
     # Assign arguments to variables
     APP_NAME=$1
     APP_NAMESPACE=$2
+    BRANCH_NAME=${3:-}
 fi
 
 # Validate the namespace
@@ -50,8 +53,12 @@ TARGET_DIR=$(pwd)
 # Temporary directory for cloning
 TEMP_DIR=$(mktemp -d)
 
-# Clone the repository into a temporary directory
-git clone "https://github.com/blumilksoftware/boilerplate" "$TEMP_DIR"
+# Clone the specified branch of the repository, or default if not specified
+if [ -z "$BRANCH_NAME" ]; then
+    git clone "https://github.com/blumilksoftware/boilerplate" "$TEMP_DIR"
+else
+    git clone --branch "$BRANCH_NAME" "https://github.com/blumilksoftware/boilerplate" "$TEMP_DIR"
+fi
 
 # Check if the clone was successful
 if [ $? -ne 0 ]; then
