@@ -19,4 +19,4 @@ jobs:
           mv init.sh example-project/init.sh
           cd example-project
           chmod +x init.sh
-          ./init.sh "TestApp" "TestNamespace" "${{ github.ref_name }}" "12345" "23456" "34567" "45678"
+          ./init.sh "TestApp" "TestNamespace" "${{ github.head_ref }}" "12345" "23456" "34567" "45678"
