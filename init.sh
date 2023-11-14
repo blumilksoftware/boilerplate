@@ -30,8 +30,9 @@ isValidAppNamespace() {
 
 promptForInput() {
     read -p "Enter the app name: " APP_NAME
-    read -p "Enter the namespace for the app: " APP_NAMESPACE
+    read -p "Enter the namespace for the app (leave empty for default namespace 'App'): " APP_NAMESPACE
     read -p "Enter the branch name (leave empty for default branch): " BRANCH_NAME
+    APP_NAMESPACE=${APP_NAMESPACE:-App}
 }
 
 echo -e "${BLUE}
@@ -41,15 +42,14 @@ echo -e "${BLUE}
 ██╔══██╗██║     ██║   ██║██║╚██╔╝██║██║██║     ██╔═██╗     ██╔══██╗██║   ██║██║██║     ██╔══╝  ██╔══██╗██╔═══╝ ██║     ██╔══██║   ██║   ██╔══╝
 ██████╔╝███████╗╚██████╔╝██║ ╚═╝ ██║██║███████╗██║  ██╗    ██████╔╝╚██████╔╝██║███████╗███████╗██║  ██║██║     ███████╗██║  ██║   ██║   ███████╗
 ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝╚══════╝╚═╝  ╚═╝    ╚═════╝  ╚═════╝ ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
-${NC}
-"
+${NC}"
 
-if [ "$#" -lt 2 ]; then
+if [ "$#" -lt 1 ]; then
     echo "Arguments missing or incomplete. Please follow the prompts."
     promptForInput
 else
     APP_NAME=$1
-    APP_NAMESPACE=$2
+    APP_NAMESPACE=${2:-App}
     BRANCH_NAME=${3:-}
 fi
 
