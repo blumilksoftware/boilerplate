@@ -32,7 +32,7 @@ promptForInput() {
 }
 
 # Check if the correct number of arguments is provided
-if [ "$#" -ne 2 ]; then
+if [ "$#" -lt 2 ]; then
     echo "Arguments missing or incomplete. Please follow the prompts."
     promptForInput
 else
