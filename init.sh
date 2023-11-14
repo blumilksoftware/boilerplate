@@ -6,6 +6,8 @@ BLUE='\033[01;34m'
 RED='\033[0;31m'
 NC='\033[0m'
 
+sleep 2
+
 isValidAppNamespace() {
     local appName="$1"
 
