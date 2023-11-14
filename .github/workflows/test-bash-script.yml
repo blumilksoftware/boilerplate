@@ -21,4 +21,4 @@ jobs:
           mv init.sh example-project/init.sh
           cd example-project
           chmod +x init.sh
-          ./init.sh "TestApp" "TestNamespace" "$BRANCH_NAME" "12345" "23456" "34567" "45678"
+          ./init.sh "TestApp" "TestNamespace" "init" "12345" "23456" "34567" "45678"
