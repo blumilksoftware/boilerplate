@@ -24,3 +24,8 @@ bash <(curl -s https://raw.githubusercontent.com/blumilksoftware/boilerplate/ini
 ```
 You will be prompted to enter the application name, namespace, and branch name.
 
+## After copying boilerplate
+You should:
+- remove the ignoring files `composer.lock`, `package-lock.json` from the `.gitignore` file,
+- update app ports in `.env.example` file and update `readme.md` file,
+- update codeowners of the repository.
