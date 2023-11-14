@@ -7,18 +7,18 @@ isValidAppNamespace() {
     local appName="$1"
 
     if [ -z "$appName" ]; then
-        echo -e "${RED}Application name cannot be empty.${NC}"
+        echo -e "${RED}Application namespace cannot be empty.${NC}"
         return 1
     fi
 
     if ! [[ $appName =~ ^[A-Z][a-zA-Z0-9]*$ ]]; then
-        echo -e "${RED}Application name must start with an uppercase letter and be alphanumeric.${NC}"
+        echo -e "${RED}Application namespace must start with an uppercase letter and be alphanumeric.${NC}"
         return 1
     fi
 
     local len=${#appName}
     if [ $len -lt 2 ] || [ $len -gt 20 ]; then
-        echo -e "${RED}Application name must be between 2 and 20 characters.${NC}"
+        echo -e "${RED}Application namespace must be between 2 and 20 characters.${NC}"
         return 1
     fi
 
@@ -47,7 +47,7 @@ if [ "$#" -lt 1 ]; then
     promptForInput
 else
     APP_NAME=$1
-    APP_NAMESPACE=${2:-}
+    APP_NAMESPACE=${2:-App}
     BRANCH_NAME=${3:-}
 fi
 
