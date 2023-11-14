@@ -32,7 +32,15 @@ promptForInput() {
     read -r -p "Enter the app name: " APP_NAME
     read -r -p "Enter the namespace for the app (leave empty for default namespace 'App'): " APP_NAMESPACE
     read -r -p "Enter the branch name (leave empty for default branch): " BRANCH_NAME
+    read -r -p "Enter the docker app host port (leave empty for default 63851): " DOCKER_APP_HOST_PORT
+    read -r -p "Enter the docker database host port (leave empty for default 63853): " DOCKER_DATABASE_HOST_PORT
+    read -r -p "Enter the docker mailpit host port (leave empty for default 63854): " DOCKER_MAILPIT_DASHBOARD_HOST_PORT
+    read -r -p "Enter the docker redis host port (leave empty for default 63854): " DOCKER_REDIS_HOST_PORT
     APP_NAMESPACE=${APP_NAMESPACE:-App}
+    DOCKER_APP_HOST_PORT=${DOCKER_APP_HOST_PORT:-63851}
+    DOCKER_DATABASE_HOST_PORT=${DOCKER_DATABASE_HOST_PORT:-63853}
+    DOCKER_MAILPIT_DASHBOARD_HOST_PORT=${DOCKER_MAILPIT_DASHBOARD_HOST_PORT:-63854}
+    DOCKER_REDIS_HOST_PORT=${DOCKER_REDIS_HOST_PORT:-63852}
 }
 
 echo -e "${BLUE}
@@ -51,6 +59,10 @@ else
     APP_NAME=$1
     APP_NAMESPACE=${2:-App}
     BRANCH_NAME=${3:-}
+    DOCKER_APP_HOST_PORT=${4:-63851}
+    DOCKER_DATABASE_HOST_PORT=${5:-63853}
+    DOCKER_MAILPIT_DASHBOARD_HOST_PORT=${6:-63854}
+    DOCKER_REDIS_HOST_PORT=${7:-63852}
 fi
 
 if ! isValidAppNamespace "$APP_NAMESPACE"; then
@@ -80,5 +92,9 @@ rm -rf "$TEMP_DIR"
 ESCAPED_APP_NAMESPACE=$(printf '%s\n' "$APP_NAMESPACE" | sed -e 's/[\/&]/\\&/g')
 find "$TARGET_DIR" -type f -exec sed -i "s/example-app/$APP_NAME/g" {} \;
 find "$TARGET_DIR" -type f -exec sed -i "s/ExampleApp/$ESCAPED_APP_NAMESPACE/g" {} \;
+find "$TARGET_DIR" -type f -name ".env.example" -exec sed -i "s/63851/$DOCKER_APP_HOST_PORT/g" {} \;
+find "$TARGET_DIR" -type f -name ".env.example" -exec sed -i "s/63853/$DOCKER_DATABASE_HOST_PORT/g" {} \;
+find "$TARGET_DIR" -type f -name ".env.example" -exec sed -i "s/63854/$DOCKER_MAILPIT_DASHBOARD_HOST_PORT/g" {} \;
+find "$TARGET_DIR" -type f -name ".env.example" -exec sed -i "s/63852/$DOCKER_REDIS_HOST_PORT/g" {} \;
 
 echo "Boilerplate copied."

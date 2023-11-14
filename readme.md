@@ -10,22 +10,20 @@ To use the script, you can either pass arguments directly or enter them interact
 
 ### Direct argument passing
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/blumilksoftware/boilerplate/init.sh) <app-name> [app-namespace] [branch-name]
+bash <(curl -s https://raw.githubusercontent.com/blumilksoftware/boilerplate/init.sh) <app-name> [app-namespace] [branch-name] [app-host-port] [db-host-port] [mailpit-dashboard-port] [redis-host-port]
 ```
 
 - `<app-name>`: Required. Name of your application.
 - `[app-namespace]`: Optional. The namespace for your application. Defaults to **App** if not provided.
 - `[branch-name]`: Optional. The specific branch to clone. Defaults to the **main** branch if not provided.
+- `[app-host-port]`: Optional. Docker app host port. Defaults to 63851.
+- `[db-host-port]`: Optional. Docker database host port. Defaults to 63853.
+- `[mailpit-dashboard-port]`: Optional. Docker Mailpit dashboard host port. Defaults to 63854.
+- `[redis-host-port]`: Optional. Docker Redis host port. Defaults to 63852.
 
 ### Interactive Mode
 Run the script without arguments:
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/blumilksoftware/boilerplate/init.sh)
 ```
-You will be prompted to enter the application name, namespace, and branch name.
-
-## After copying boilerplate
-You should:
-- remove the ignoring files `composer.lock`, `package-lock.json` from the `.gitignore` file,
-- update app ports in `.env.example` file and update `readme.md` file,
-- update codeowners of the repository.
+You will be prompted to enter the application name, namespace, branch name, and Docker port settings.
