@@ -1,6 +1,9 @@
 name: Test Bash Script
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches: [ "main" ]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   test:
@@ -13,9 +16,9 @@ jobs:
 
       - name: Run Bash Script
         run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
           mkdir example-project
           mv init.sh example-project/init.sh
           cd example-project
           chmod +x ./init.sh
-          BRANCH_NAME=${GITHUB_REF#refs/heads/}
           ./init.sh "TestApp" "TestNamespace" "$BRANCH_NAME" "12345" "23456" "34567" "45678"
