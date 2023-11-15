@@ -8,5 +8,6 @@ use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance as Mi
 
 class PreventRequestsDuringMaintenance extends Middleware
 {
-    protected $except = [];
+    protected $except = [
+    ];
 }

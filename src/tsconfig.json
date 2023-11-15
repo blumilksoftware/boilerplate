@@ -9,9 +9,7 @@
         "skipLibCheck": true,
         "strict": true,
         "types": [
-            "@types/node",
             "vite/client",
-            "vitest/globals"
         ],
         "resolveJsonModule": true,
         "esModuleInterop": true,
