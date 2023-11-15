@@ -35,7 +35,7 @@ jobs:
 
       - name: Install npm dependencies
         working-directory: src
-        run: npm clean-install
+        run: npm install
 
       - name: Run JS linter
         working-directory: src
