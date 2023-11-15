@@ -1,0 +1,22 @@
+name: Test Bash Script
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  test:
+    name: Run Script
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.1 # https://github.com/actions/checkout
+
+      - name: Run Bash Script
+        run: |
+          mkdir example-project
+          mv init.sh example-project/init.sh
+          cd example-project
+          chmod +x init.sh
+          ./init.sh "TestApp" "TestNamespace" "${{ github.head_ref }}" "12345" "23456" "34567" "45678"
