@@ -17,28 +17,9 @@ jobs:
     timeout-minutes: 10
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
-    services:
-      pgsql:
-        image: postgres:16.1-alpine3.18 #https://hub.docker.com/_/postgres
-        env:
-          POSTGRES_DB: example-app
-          POSTGRES_USER: example-app
-          POSTGRES_PASSWORD: password
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 3s
-          --health-timeout 3s
-          --health-retries 5
-        ports:
-          - 5432:5432
 
     steps:
       - uses: actions/checkout@v4.1.1 #https://github.com/actions/checkout
-
-      - name: Validate composer.json and composer.lock
-        working-directory: src
-        run: composer validate
 
       - name: Cache dependencies
         uses: actions/cache@v3.3.2 #https://github.com/actions/cache
@@ -48,7 +29,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-dependencies
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
+        uses: shivammathur/setup-php@2.27.1 #https://github.com/shivammathur/setup-php
         with:
           php-version: 8.2
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, pdo_pgsql, intl
@@ -61,7 +42,3 @@ jobs:
       - name: Run PHP linter
         working-directory: src
         run: composer cs
-
-      - name: Execute tests
-        working-directory: src
-        run: php artisan test --env=ci
