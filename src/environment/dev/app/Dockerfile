@@ -1,7 +1,10 @@
+# For other versions check: https://hub.docker.com/_/composer/tags
 FROM composer/composer:2.6.5-bin as composer-bin
 
+# For other versions check: https://hub.docker.com/_/node/tags?page=1&name=bullseye-slim
 FROM node:20.9.0-bullseye-slim as node
 
+# For other versions check: https://hub.docker.com/_/php/tags?page=1&name=fpm-bullseye
 FROM php:8.2.12-fpm-bullseye
 
 COPY --from=composer-bin ./composer /usr/bin/composer
@@ -20,7 +23,7 @@ RUN adduser \
         ${PHP_FPM_GROUP} \
         ${USER_NAME}
 
-#Add node and npm
+# Add node and npm
 COPY --from=node --chown=${USER_NAME}:root /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node --chown=${USER_NAME}:root /usr/local/bin/node /usr/local/bin/node
 RUN ln --symbolic /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \

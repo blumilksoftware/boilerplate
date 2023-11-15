@@ -33,8 +33,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Instal npm dependencies
+      - name: Install npm dependencies
+        working-directory: src
         run: npm clean-install
 
       - name: Run JS linter
+        working-directory: src
         run: npm run lint

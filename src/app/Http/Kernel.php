@@ -4,6 +4,15 @@ declare(strict_types=1);
 
 namespace ExampleApp\Http;
 
+use ExampleApp\Http\Middleware\Authenticate;
+use ExampleApp\Http\Middleware\EncryptCookies;
+use ExampleApp\Http\Middleware\HandleInertiaRequests;
+use ExampleApp\Http\Middleware\PreventRequestsDuringMaintenance;
+use ExampleApp\Http\Middleware\RedirectIfAuthenticated;
+use ExampleApp\Http\Middleware\TrimStrings;
+use ExampleApp\Http\Middleware\TrustProxies;
+use ExampleApp\Http\Middleware\ValidateSignature;
+use ExampleApp\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
@@ -19,15 +28,6 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use ExampleApp\Http\Middleware\Authenticate;
-use ExampleApp\Http\Middleware\EncryptCookies;
-use ExampleApp\Http\Middleware\HandleInertiaRequests;
-use ExampleApp\Http\Middleware\PreventRequestsDuringMaintenance;
-use ExampleApp\Http\Middleware\RedirectIfAuthenticated;
-use ExampleApp\Http\Middleware\TrimStrings;
-use ExampleApp\Http\Middleware\TrustProxies;
-use ExampleApp\Http\Middleware\ValidateSignature;
-use ExampleApp\Http\Middleware\VerifyCsrfToken;
 
 class Kernel extends HttpKernel
 {

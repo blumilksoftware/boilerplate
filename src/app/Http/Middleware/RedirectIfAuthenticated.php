@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace ExampleApp\Http\Middleware;
 
 use Closure;
+use ExampleApp\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use ExampleApp\Providers\RouteServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated
