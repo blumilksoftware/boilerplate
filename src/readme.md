@@ -56,6 +56,10 @@ Lints and fixes frontend files:
 ```
 npm run lintf
 ```
+TypeScript checker:
+```
+npm run tsc
+```
 
 ### Containers
 
