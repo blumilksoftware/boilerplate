@@ -31,11 +31,11 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v4 #https://github.com/actions/setup-node
         with:
-          node-version: 20
+          node-version: 21
 
       - name: Install npm dependencies
         working-directory: src
-        run: npm install
+        run: npm clean-install
 
       - name: Run JS linter
         working-directory: src

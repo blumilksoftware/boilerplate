@@ -2,7 +2,7 @@
 FROM composer/composer:2.6.5-bin as composer-bin
 
 # For other versions check: https://hub.docker.com/_/node/tags?page=1&name=bullseye-slim
-FROM node:20.9.0-bullseye-slim as node
+FROM node:21.1.0-bullseye-slim as node
 
 # For other versions check: https://hub.docker.com/_/php/tags?page=1&name=fpm-bullseye
 FROM php:8.2.12-fpm-bullseye
