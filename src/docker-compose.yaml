@@ -39,7 +39,7 @@ services:
             - ./environment/dev/app/supervisord.conf:/etc/supervisor/custom-supervisord.conf:ro
             - .:/application
         ports:
-            - ${DOCKER_APP_HOST_PORT:-3851}:80
+            - ${DOCKER_APP_HOST_PORT:-63851}:80
         networks:
             - example-app-dev
             - traefik-proxy-blumilk-local
@@ -62,7 +62,7 @@ services:
             timeout: 3s
             retries: 5
         ports:
-            - ${DOCKER_DATABASE_HOST_PORT:-3853}:5432
+            - ${DOCKER_DATABASE_HOST_PORT:-63853}:5432
         volumes:
             - example-app-postgres-data:/var/lib/postgresql/data
         networks:
@@ -97,7 +97,7 @@ services:
         image: redis:7.2.3-alpine3.18
         container_name: example-app-redis-dev
         ports:
-            - ${DOCKER_REDIS_HOST_PORT:-3852}:6379
+            - ${DOCKER_REDIS_HOST_PORT:-63852}:6379
         volumes:
             - example-app-redis-data:/data
         networks:
