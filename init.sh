@@ -101,9 +101,9 @@ rm -rf "$TEMP_DIR"
 ESCAPED_APP_NAMESPACE=$(printf '%s\n' "$APP_NAMESPACE" | sed -e 's/[\/&]/\\&/g')
 find "$TARGET_DIR" -type f -exec sed -i "s/example-app/$APP_NAME/g" {} \;
 find "$TARGET_DIR" -type f -exec sed -i "s/ExampleApp/$ESCAPED_APP_NAMESPACE/g" {} \;
-find "$TARGET_DIR" -type f -name ".env.example" -exec sed -i "s/63851/$DOCKER_APP_HOST_PORT/g" {} \;
-find "$TARGET_DIR" -type f -name ".env.example" -exec sed -i "s/63853/$DOCKER_DATABASE_HOST_PORT/g" {} \;
-find "$TARGET_DIR" -type f -name ".env.example" -exec sed -i "s/63854/$DOCKER_MAILPIT_DASHBOARD_HOST_PORT/g" {} \;
-find "$TARGET_DIR" -type f -name ".env.example" -exec sed -i "s/63852/$DOCKER_REDIS_HOST_PORT/g" {} \;
+find "$TARGET_DIR" -type f \( -name ".env.example" -o -name "docker-compose.yml" -o -name "readme.md" \) -exec sed -i "s/63851/$DOCKER_APP_HOST_PORT/g" {} \;
+find "$TARGET_DIR" -type f \( -name ".env.example" -o -name "docker-compose.yml" -o -name "readme.md" \) -exec sed -i "s/63853/$DOCKER_DATABASE_HOST_PORT/g" {} \;
+find "$TARGET_DIR" -type f \( -name ".env.example" -o -name "docker-compose.yml" -o -name "readme.md" \) -exec sed -i "s/63854/$DOCKER_MAILPIT_DASHBOARD_HOST_PORT/g" {} \;
+find "$TARGET_DIR" -type f \( -name ".env.example" -o -name "docker-compose.yml" -o -name "readme.md" \) -exec sed -i "s/63852/$DOCKER_REDIS_HOST_PORT/g" {} \;
 
 echo "Boilerplate copied."
