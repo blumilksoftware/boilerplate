@@ -69,8 +69,17 @@ if ! isValidAppNamespace "$APP_NAMESPACE"; then
     exit 1
 fi
 
-TARGET_DIR=$(pwd)
 TEMP_DIR=$(mktemp -d)
+TARGET_DIR="$(pwd)/$APP_NAME"
+
+# Check if the directory already exists
+if [ -d "$TARGET_DIR" ]; then
+    echo -e "${RED}Directory $TARGET_DIR already exists. Please choose a different app name or remove the existing directory.${NC}"
+    exit 1
+fi
+
+# Create the new directory
+mkdir -p "$TARGET_DIR"
 
 if [ -z "$BRANCH_NAME" ]; then
     git clone "https://github.com/blumilksoftware/boilerplate" "$TEMP_DIR"
