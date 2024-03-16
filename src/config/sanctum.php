@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-use ExampleApp\Http\Middleware\EncryptCookies;
-use ExampleApp\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
+use Laravel\Sanctum\Http\Middleware\AuthenticateSession;
 use Laravel\Sanctum\Sanctum;
 
 return [
@@ -15,7 +16,8 @@ return [
     "guard" => ["web"],
     "expiration" => null,
     "middleware" => [
-        "verify_csrf_token" => VerifyCsrfToken::class,
+        "authenticate_session" => AuthenticateSession::class,
         "encrypt_cookies" => EncryptCookies::class,
+        "validate_csrf_token" => ValidateCsrfToken::class,
     ],
 ];

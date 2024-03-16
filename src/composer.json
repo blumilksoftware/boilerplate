@@ -8,16 +8,16 @@
         "php": "^8.2",
         "ext-pdo": "*",
         "guzzlehttp/guzzle": "^7.8.0",
-        "inertiajs/inertia-laravel": "^0.6.11",
-        "laravel/framework": "^10.32.1",
-        "laravel/sanctum": "^3.3.2",
+        "inertiajs/inertia-laravel": "^1.0",
+        "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8.2"
     },
     "require-dev": {
         "blumilksoftware/codestyle": "^v2.7.0",
         "fakerphp/faker": "^1.23.0",
         "mockery/mockery": "^1.6.6",
-        "nunomaduro/collision": "^7.10.0",
+        "nunomaduro/collision": "^8.1",
         "nunomaduro/larastan": "^2.6.4",
         "phpunit/phpunit": "^10.4.2",
         "spatie/laravel-ignition": "^2.3.1"
