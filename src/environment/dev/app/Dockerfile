@@ -5,7 +5,7 @@ FROM composer/composer:2.6.5-bin as composer-bin
 FROM node:21.1.0-bullseye-slim as node
 
 # For other versions check: https://hub.docker.com/_/php/tags?page=1&name=fpm-bullseye
-FROM php:8.2.12-fpm-bullseye
+FROM php:8.3.4-fpm-bullseye
 
 COPY --from=composer-bin ./composer /usr/bin/composer
 
@@ -57,7 +57,7 @@ RUN apt-get update \
         redis
 
 # For other versions check: https://pecl.php.net/package/xdebug
-ARG XDEBUG_VERSION=3.2.2
+ARG XDEBUG_VERSION=3.3.1
 ARG INSTALL_XDEBUG=true
 
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
