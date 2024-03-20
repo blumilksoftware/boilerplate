@@ -37,7 +37,7 @@ jobs:
 
       - name: Install Composer dependencies
         working-directory: src
-        run: composer install --prefer-dist --no-interaction --no-suggest
+        run: composer install --prefer-dist --no-interaction
 
       - name: Run PHP linter
         working-directory: src
