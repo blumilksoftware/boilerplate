@@ -5,24 +5,22 @@ declare(strict_types=1);
 use Illuminate\Support\Str;
 
 return [
-    "default" => env("CACHE_DRIVER", "file"),
+    "default" => env("CACHE_STORE", "database"),
     "stores" => [
-        "apc" => [
-            "driver" => "apc",
-        ],
         "array" => [
             "driver" => "array",
             "serialize" => false,
         ],
         "database" => [
             "driver" => "database",
-            "table" => "cache",
-            "connection" => null,
-            "lock_connection" => null,
+            "table" => env("DB_CACHE_TABLE", "cache"),
+            "connection" => env("DB_CACHE_CONNECTION", null),
+            "lock_connection" => env("DB_CACHE_LOCK_CONNECTION", null),
         ],
         "file" => [
             "driver" => "file",
             "path" => storage_path("framework/cache/data"),
+            "lock_path" => storage_path("framework/cache/data"),
         ],
         "memcached" => [
             "driver" => "memcached",
@@ -31,8 +29,7 @@ return [
                 env("MEMCACHED_USERNAME"),
                 env("MEMCACHED_PASSWORD"),
             ],
-            "options" => [
-            ],
+            "options" => [],
             "servers" => [
                 [
                     "host" => env("MEMCACHED_HOST", "127.0.0.1"),
@@ -43,8 +40,8 @@ return [
         ],
         "redis" => [
             "driver" => "redis",
-            "connection" => "cache",
-            "lock_connection" => "default",
+            "connection" => env("REDIS_CACHE_CONNECTION", "cache"),
+            "lock_connection" => env("REDIS_CACHE_LOCK_CONNECTION", "default"),
         ],
         "dynamodb" => [
             "driver" => "dynamodb",
