@@ -14,7 +14,7 @@
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
-        "blumilksoftware/codestyle": "^v2.7.0",
+        "blumilksoftware/codestyle": "^v3.0.0",
         "fakerphp/faker": "^1.23.0",
         "mockery/mockery": "^1.6.6",
         "nunomaduro/collision": "^8.1",
