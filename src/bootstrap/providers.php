@@ -1,7 +1,8 @@
 <?php
 
 declare(strict_types=1);
+use ExampleApp\Providers\AppServiceProvider;
 
 return [
-    ExampleApp\Providers\AppServiceProvider::class,
+    AppServiceProvider::class,
 ];
