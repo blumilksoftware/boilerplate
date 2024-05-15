@@ -35,7 +35,7 @@ promptForInput() {
     read -r -p "Enter the docker app host port (leave empty for default 63851): " DOCKER_APP_HOST_PORT
     read -r -p "Enter the docker database host port (leave empty for default 63853): " DOCKER_DATABASE_HOST_PORT
     read -r -p "Enter the docker mailpit host port (leave empty for default 63854): " DOCKER_MAILPIT_DASHBOARD_HOST_PORT
-    read -r -p "Enter the docker redis host port (leave empty for default 63854): " DOCKER_REDIS_HOST_PORT
+    read -r -p "Enter the docker redis host port (leave empty for default 63852): " DOCKER_REDIS_HOST_PORT
     APP_NAMESPACE=${APP_NAMESPACE:-App}
     DOCKER_APP_HOST_PORT=${DOCKER_APP_HOST_PORT:-63851}
     DOCKER_DATABASE_HOST_PORT=${DOCKER_DATABASE_HOST_PORT:-63853}
