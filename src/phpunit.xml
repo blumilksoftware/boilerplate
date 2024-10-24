@@ -21,7 +21,7 @@
         <env name="APP_ENV" value="testing"/>
         <env name="APP_KEY" value="base64:SKEJSy9oF9chQBCMbxqgj5zhtAvug9kwZ+cDiP1Y8A8="/>
         <env name="BCRYPT_ROUNDS" value="4"/>
-        <env name="CACHE_DRIVER" value="array"/>
+        <env name="CACHE_STORE" value="array"/>
         <env name="DB_HOST" value="example-app-db-dev"/>
         <env name="DB_DATABASE" value="example-app-test"/>
         <env name="DB_USERNAME" value="example-app"/>
