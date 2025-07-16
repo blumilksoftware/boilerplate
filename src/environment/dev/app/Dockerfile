@@ -37,7 +37,7 @@ RUN mv "${PHP_INI_DIR}/php.ini-development" "${PHP_INI_DIR}/php.ini"
 # For other versions check: http://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
 ARG NGINX_VERSION="1.25.5-1~bullseye"
 # For other versions check: https://pecl.php.net/package/redis
-ARG PHPREDIS_VERSION=6.0.2
+ARG PHPREDIS_VERSION=6.2.0
 
 RUN apt-get update \
     && apt-get install --assume-yes gpg \
@@ -57,7 +57,7 @@ RUN apt-get update \
         redis
 
 # For other versions check: https://pecl.php.net/package/xdebug
-ARG XDEBUG_VERSION=3.3.2
+ARG XDEBUG_VERSION=3.4.4
 ARG INSTALL_XDEBUG=true
 
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
