@@ -9,14 +9,17 @@ on:
       - 'composer.json'
       - 'composer.lock'
       - 'phpunit.xml'
-      - 'env.ci'
+      - '.env.ci'
 
 jobs:
   test-and-lint-php:
     name: Test & lint PHP codebase
     timeout-minutes: 10
     if: github.event.pull_request.draft == false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    env:
+      # renovate: datasource=github-releases depName=php packageName=containerbase/php-prebuild
+      PHP_VERSION: 8.4.3
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2 # https://github.com/actions/checkout
@@ -31,7 +34,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@9e72090525849c5e82e596468b86eb55e9cc5401 # 2.32.0 # https://github.com/shivammathur/setup-php
         with:
-          php-version: 8.3
+          php-version: ${{ env.PHP_VERSION }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, pdo_pgsql, intl
           coverage: none
 
@@ -42,3 +45,8 @@ jobs:
       - name: Run PHP linter
         working-directory: src
         run: composer cs
+
+      - name: Execute tests
+        run: |
+          cp .env.ci .env
+          php artisan test --colors=always
