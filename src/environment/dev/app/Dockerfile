@@ -35,9 +35,8 @@ RUN ln --symbolic /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/
 # Use the default development configuration
 RUN mv "${PHP_INI_DIR}/php.ini-development" "${PHP_INI_DIR}/php.ini"
 
-# For other versions check: http://github.com/nginx/nginx/releases
-# renovate: datasource=github-tags depName=nginx/nginx extractVersion=^release-(?<version>.*)$
-ARG NGINX_VERSION="1.29.0"
+# For other versions check: http://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
+ARG NGINX_VERSION="1.27.3-1~bookworm"
 
 # For other versions check: http://github.com/phpredis/phpredis/releases
 # renovate: datasource=github-tags depName=phpredis/phpredis
