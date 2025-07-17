@@ -1,8 +1,8 @@
 networks:
     example-app-dev:
         driver: bridge
-    traefik-proxy-blumilk-local:
-        external: true
+    traefik-proxy-blumilk-local-environment:
+      external: true
 
 volumes:
     example-app-postgres-data:
@@ -20,16 +20,26 @@ services:
                 - USER_ID=${DOCKER_HOST_USER_ID:-1000}
         labels:
             - "traefik.enable=true"
-            - "traefik.blumilk.environment=true"
+            - "traefik.blumilk.local.environment=true"
             # HTTP
-            - "traefik.http.routers.example-app-http-router.rule=Host(`example-app.blumilk.localhost`)"
+            - "traefik.http.routers.example-app-http-router.rule=Host(`${APP_DOMAIN}`)"
             - "traefik.http.routers.example-app-http-router.entrypoints=web"
-            # HTTP to HTTPS redirect
+            - "traefik.http.routers.example-app-http-router.service=example-app"
+          # HTTP to HTTPS redirect
             #      - "traefik.http.routers.example-app-http-router.middlewares=https-redirect@file"
             # HTTPS
-            - "traefik.http.routers.example-app-https-router.rule=Host(`example-app.blumilk.localhost`)"
+            - "traefik.http.routers.example-app-https-router.rule=Host(`${APP_DOMAIN}`)"
             - "traefik.http.routers.example-app-https-router.entrypoints=websecure"
             - "traefik.http.routers.example-app-https-router.tls=true"
+            - "traefik.http.routers.example-app-https-router.service=example-app"
+            # APP LOADBALANCER
+            - "traefik.http.services.example-app.loadbalancer.server.port=80"
+            # VITE DEV SERVER
+            - "traefik.http.routers.example-app-vite-dev-server-https-router.rule=Host(`${VITE_DEV_SERVER_DOCKER_HOST_NAME}`)"
+            - "traefik.http.routers.example-app-vite-dev-server-https-router.entrypoints=websecure"
+            - "traefik.http.routers.example-app-vite-dev-server-https-router.tls=true"
+            - "traefik.http.routers.example-app-vite-dev-server-https-router.service=example-app-vite-dev-server"
+            - "traefik.http.services.example-app-vite-dev-server.loadbalancer.server.port=5173"
         container_name: example-app-app-dev
         working_dir: /application
         volumes:
@@ -42,7 +52,7 @@ services:
             - ${DOCKER_APP_HOST_PORT:-63851}:80
         networks:
             - example-app-dev
-            - traefik-proxy-blumilk-local
+            - traefik-proxy-blumilk-local-environment
         restart: unless-stopped
         depends_on:
             database:
@@ -70,7 +80,7 @@ services:
         restart: unless-stopped
 
     mailpit:
-      image: axllent/mailpit:v1.24.1@sha256:4873e5a441ed368f1e98a832f61257a033859f5e829542cd03fb772d2282ea4e
+      image: axllent/mailpit:v1.22.3@sha256:f7f7c31de4de59540ad6515a0ca057a77525bca2069b6e747d873ca66c10fe08
       container_name: example-app-mailpit-dev
       labels:
         - "traefik.enable=true"
@@ -88,7 +98,7 @@ services:
         - "traefik.http.services.example-app-mailpit.loadbalancer.server.port=8025"
       networks:
         - example-app-dev
-        - traefik-proxy-blumilk-local
+        - traefik-proxy-blumilk-local-environment
       ports:
         - ${DOCKER_MAILPIT_DASHBOARD_HOST_PORT:-63854}:8025
       restart: unless-stopped

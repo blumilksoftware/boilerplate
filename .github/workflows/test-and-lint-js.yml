@@ -16,22 +16,25 @@ jobs:
     name: Test & lint JS codebase
     timeout-minutes: 10
     if: github.event.pull_request.draft == false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    env:
+      # renovate: datasource=node-version depName=node
+      NODE_VERSION: 22.13.1
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2 # https://github.com/actions/checkout
 
       - name: Cache dependencies
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3 # https://github.com/actions/cache
+        uses: actions/cache@0c907a75c2c80ebcb7f088228285e798b750cf8f # v4.2.1 # https://github.com/actions/cache
         with:
           path: node_modules
           key: ${{ runner.os }}-npm-dependencies-${{ hashFiles('package.lock') }}
           restore-keys: ${{ runner.os }}-npm-dependencies
 
       - name: Set up node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0 # https://github.com/actions/setup-node
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0 # https://github.com/actions/setup-node
         with:
-          node-version: 21
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install npm dependencies
         working-directory: src
