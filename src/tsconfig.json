@@ -36,6 +36,5 @@
     "exclude": [
         "node_modules",
         "public",
-        "resources/js/Core"
     ]
 }
