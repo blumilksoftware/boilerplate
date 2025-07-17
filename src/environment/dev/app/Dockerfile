@@ -47,7 +47,7 @@ RUN apt-get update \
     && curl https://nginx.org/keys/nginx_signing.key | gpg --dearmour --output /etc/apt/trusted.gpg.d/apt.nginx.org.gpg > /dev/null \
     && echo "deb https://nginx.org/packages/mainline/debian bullseye nginx" | tee /etc/apt/sources.list.d/nginx.list \
     && apt-get update && apt-get install --assume-yes \
-        nginx=${NGINX_VERSION}-1~bullseye \
+        nginx=${NGINX_VERSION} \
         zip \
         libzip-dev \
         libpq-dev \
