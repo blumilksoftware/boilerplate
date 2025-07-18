@@ -36,7 +36,8 @@ RUN ln --symbolic /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/
 RUN mv "${PHP_INI_DIR}/php.ini-development" "${PHP_INI_DIR}/php.ini"
 
 # For other versions check: http://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
-ARG NGINX_VERSION="1.27.3-1~bookworm"
+# renovate: datasource=github-tags depName=nginx/nginx extractVersion=^release-(?<version>.*)$
+ARG NGINX_VERSION="1.25.5"
 
 # For other versions check: http://github.com/phpredis/phpredis/releases
 # renovate: datasource=github-tags depName=phpredis/phpredis
@@ -47,7 +48,7 @@ RUN apt-get update \
     && curl https://nginx.org/keys/nginx_signing.key | gpg --dearmour --output /etc/apt/trusted.gpg.d/apt.nginx.org.gpg > /dev/null \
     && echo "deb https://nginx.org/packages/mainline/debian bookworm nginx" | tee /etc/apt/sources.list.d/nginx.list \
     && apt-get update && apt-get install --assume-yes \
-        nginx=${NGINX_VERSION} \
+        nginx=${NGINX_VERSION}-1~bookworm \
         zip \
         libzip-dev \
         libpq-dev \
