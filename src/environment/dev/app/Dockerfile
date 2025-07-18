@@ -2,10 +2,10 @@
 FROM composer/composer:2.8.10-bin@sha256:b85784e99453d3b64099ca094298666a476e83a70e8bcd0f252675d2fdc4e4e0 AS composer-bin
 FROM ghcr.io/php/pie:1.0.0-bin@sha256:f8fb97db83aa125841c0429bd4ea1fc8c34eecf30873e00e1b5b729678b6538d AS pie-bin
 # For other versions check: https://hub.docker.com/_/node/tags?page=1&name=bookworm-slim
-FROM node:24.3.0-bookworm-slim@sha256:8225b1806c6e37dced949224b5c0d8278a2fe593967288620e0af69b2cbc4539 AS node
+FROM node:24.4.0-bookworm-slim@sha256:1b044a60874f1b57ac8c4e708ddb3a00e55b34586ebbacce09a48796dafcc799 AS node
 
 # For other versions check: https://hub.docker.com/_/php/tags?page=1&name=fpm-bookworm
-FROM php:8.4.8-fpm-bookworm@sha256:97e4b8dcb5d97baaec79b774dcdf123b675820de421361f0ee5aea4c1aece0dd
+FROM php:8.4.10-fpm-bookworm@sha256:c9d4beea5abc16ba2c5a52aa0caafd534500682bbec17411fad9198bb47ec196
 
 COPY --from=composer-bin ./composer /usr/bin/composer
 COPY --from=pie-bin /pie /usr/bin/pie
@@ -37,7 +37,7 @@ RUN mv "${PHP_INI_DIR}/php.ini-development" "${PHP_INI_DIR}/php.ini"
 
 # For other versions check: http://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
 # renovate: datasource=github-tags depName=nginx/nginx extractVersion=^release-(?<version>.*)$
-ARG NGINX_VERSION="1.25.5"
+ARG NGINX_VERSION="1.29.0"
 
 # For other versions check: http://github.com/phpredis/phpredis/releases
 # renovate: datasource=github-tags depName=phpredis/phpredis
