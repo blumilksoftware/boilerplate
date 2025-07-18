@@ -1,13 +1,14 @@
 # For other versions check: https://hub.docker.com/_/composer/tags
-FROM composer/composer:2.8.5-bin@sha256:f39305913df47b4de56c64f4719d35eedbd65d7d96ff554110b9e9bd0c7a18c0 AS composer-bin
-FROM ghcr.io/php/pie:1.0.0-bin AS pie-bin
-# For other versions check: https://hub.docker.com/_/node/tags?page=1&name=bullseye-slim
-FROM node:22.13.1-bullseye-slim@sha256:78d58cb33cd6508d24dc07b6b9825d4669275b094ea2aafc9ae10610991d8945 AS node
+FROM composer/composer:2.8.10-bin@sha256:b85784e99453d3b64099ca094298666a476e83a70e8bcd0f252675d2fdc4e4e0 AS composer-bin
+FROM ghcr.io/php/pie:1.0.0-bin@sha256:f8fb97db83aa125841c0429bd4ea1fc8c34eecf30873e00e1b5b729678b6538d AS pie-bin
+# For other versions check: https://hub.docker.com/_/node/tags?page=1&name=bookworm-slim
+FROM node:24.3.0-bookworm-slim@sha256:8225b1806c6e37dced949224b5c0d8278a2fe593967288620e0af69b2cbc4539 AS node
 
-# For other versions check: https://hub.docker.com/_/php/tags?page=1&name=fpm-bullseye
-FROM php:8.4.3-fpm-bullseye@sha256:659e76cd9d0f03bbd4bad364c0d29ed736c5ea9035a1251b823a121ca4f6b1fd
+# For other versions check: https://hub.docker.com/_/php/tags?page=1&name=fpm-bookworm
+FROM php:8.4.8-fpm-bookworm@sha256:97e4b8dcb5d97baaec79b774dcdf123b675820de421361f0ee5aea4c1aece0dd
 
 COPY --from=composer-bin ./composer /usr/bin/composer
+COPY --from=pie-bin /pie /usr/bin/pie
 
 ARG USER_NAME=host-user
 ARG USER_ID=1000
@@ -34,7 +35,7 @@ RUN ln --symbolic /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/
 # Use the default development configuration
 RUN mv "${PHP_INI_DIR}/php.ini-development" "${PHP_INI_DIR}/php.ini"
 
-# For other versions check: http://github.com/nginx/nginx/releases
+# For other versions check: http://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
 # renovate: datasource=github-tags depName=nginx/nginx extractVersion=^release-(?<version>.*)$
 ARG NGINX_VERSION="1.25.5"
 
@@ -45,9 +46,9 @@ ARG PHPREDIS_VERSION=6.2.0
 RUN apt-get update \
     && apt-get install --assume-yes gpg \
     && curl https://nginx.org/keys/nginx_signing.key | gpg --dearmour --output /etc/apt/trusted.gpg.d/apt.nginx.org.gpg > /dev/null \
-    && echo "deb https://nginx.org/packages/mainline/debian bullseye nginx" | tee /etc/apt/sources.list.d/nginx.list \
+    && echo "deb https://nginx.org/packages/mainline/debian bookworm nginx" | tee /etc/apt/sources.list.d/nginx.list \
     && apt-get update && apt-get install --assume-yes \
-        nginx=${NGINX_VERSION}-1~bullseye \
+        nginx=${NGINX_VERSION}-1~bookworm \
         zip \
         libzip-dev \
         libpq-dev \

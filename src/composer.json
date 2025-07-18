@@ -10,7 +10,7 @@
         "guzzlehttp/guzzle": "^7.9.3",
         "inertiajs/inertia-laravel": "^2.0.3",
         "laravel/framework": "^12.20.0",
-        "laravel/sanctum": "^4.0.8",
+        "laravel/sanctum": "^4.1.2",
         "laravel/tinker": "^2.10.1"
     },
     "require-dev": {
@@ -18,7 +18,7 @@
         "fakerphp/faker": "^1.24.1",
         "larastan/larastan": "^3.5.0",
         "mockery/mockery": "^1.6.12",
-        "nunomaduro/collision": "^8.6.1",
+        "nunomaduro/collision": "^8.8.2",
         "phpunit/phpunit": "^12.2.7",
         "spatie/laravel-ignition": "^2.9.1"
     },
