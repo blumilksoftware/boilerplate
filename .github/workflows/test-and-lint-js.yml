@@ -8,8 +8,8 @@ on:
       - '**.js'
       - '**.ts'
       - '**.vue'
-      - 'package.json'
-      - 'package.lock'
+      - 'src/package.json'
+      - 'src/package.lock'
 
 jobs:
   test-and-lint-js:

@@ -6,10 +6,10 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - '**.php'
-      - 'composer.json'
-      - 'composer.lock'
-      - 'phpunit.xml'
-      - '.env.ci'
+      - 'src/composer.json'
+      - 'src/composer.lock'
+      - 'src/phpunit.xml'
+      - 'src/.env.ci'
 
 jobs:
   test-and-lint-php:
