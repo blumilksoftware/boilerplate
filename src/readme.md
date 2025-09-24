@@ -5,8 +5,8 @@
 ### Local development
 ```
 cp .env.example .env
-make init
-make dev
+task init
+task vite
 ```
 Application will be running under [localhost:63851](localhost:63851) and [http://example-app.blumilk.localhost/](http://example-app.blumilk.localhost/) in Blumilk traefik environment. If you don't have a Blumilk traefik environment set up yet, follow the instructions from this [repository](https://github.com/blumilksoftware/environment).
 
