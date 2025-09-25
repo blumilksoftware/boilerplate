@@ -27,6 +27,7 @@ tasks:
     deps: [run]
     cmds:
       - cmd: "{{.DOCKER_EXEC_USER}} composer install"
+      - task: _set-app-key
       - cmd: "{{.DOCKER_EXEC_USER}} npm install"
       - cmd: "{{.DOCKER_EXEC_USER}} php artisan migrate"
 
