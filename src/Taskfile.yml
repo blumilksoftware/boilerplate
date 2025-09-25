@@ -25,8 +25,10 @@ tasks:
     desc: "Initialize the project"
     aliases: [init]
     deps: [run]
+    cmds:
+      - cmd: "{{.DOCKER_EXEC_USER}} composer install"
       - cmd: "{{.DOCKER_EXEC_USER}} npm install"
-      - cmd: "{{.DOCKER_EXEC_USER}} php artisan migrate" 
+      - cmd: "{{.DOCKER_EXEC_USER}} php artisan migrate"
 
   vite:
     desc: "Run Vite dev server"
@@ -99,7 +101,7 @@ tasks:
     desc: "Run fixers"
     cmds:
       - cmd: "{{.DOCKER_EXEC_USER}} composer csf"
-      - cmd: "{{.DOCKER_EXEC_USER}} npm run lint" 
+      - cmd: "{{.DOCKER_EXEC_USER}} npm run lint"
 
   queue:
     desc: "Run queue:work"
