@@ -25,10 +25,8 @@ tasks:
     desc: "Initialize the project"
     aliases: [init]
     deps: [run]
-    cmds:
-      - cmd: "{{.DOCKER_EXEC_USER}} composer install"
-      - task: _set-app-key
       - cmd: "{{.DOCKER_EXEC_USER}} npm install"
+      - cmd: "{{.DOCKER_EXEC_USER}} php artisan migrate" 
 
   vite:
     desc: "Run Vite dev server"
@@ -74,7 +72,7 @@ tasks:
     desc: "Enter app shell"
     aliases: [shell]
     cmds:
-      - cmd: "{{.DOCKER_EXEC_USER}} sh"
+      - cmd: "{{.DOCKER_EXEC_USER}} bash"
 
   shell-app-root:
     desc: "Enter app shell as root"
@@ -100,7 +98,8 @@ tasks:
   fix:
     desc: "Run fixers"
     cmds:
-      - cmd: "{{.DOCKER_EXEC_USER}} composer csf && {{.DOCKER_EXEC_USER}} npm run lint"
+      - cmd: "{{.DOCKER_EXEC_USER}} composer csf"
+      - cmd: "{{.DOCKER_EXEC_USER}} npm run lint" 
 
   queue:
     desc: "Run queue:work"
@@ -112,7 +111,7 @@ tasks:
     internal: true
     cmds:
       - |
-        APP_KEY_VALUE=$(grep APP_KEY .env | cut --delimiter '=' --fields 2-)
+        APP_KEY_VALUE=$(grep '^APP_KEY' .env | cut --delimiter '=' --fields 2-)
         if [ -z "${APP_KEY_VALUE}" ]; then
           echo "APP_KEY is not set. Creating:"
           docker compose exec {{.DOCKER_COMPOSE_APP_CONTAINER}} php artisan key:generate

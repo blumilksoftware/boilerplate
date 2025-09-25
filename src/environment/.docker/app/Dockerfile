@@ -1,16 +1,16 @@
 FROM registry.blumilk.pl/internal-public/secops-tools-bin:v1.1.0 AS secops-tools-bin
-FROM composer:2.8.10 AS composer
-FROM ghcr.io/php/pie:1.0.0-bin AS pie-bin
-FROM node:24.4.0-bookworm-slim AS node
+FROM composer:2.8.12 AS composer
+FROM ghcr.io/php/pie:1.2.1-bin AS pie-bin
+FROM node:24.8.0-bookworm-slim AS node
 
-FROM php:8.4.10-fpm-bookworm AS base
+FROM php:8.4.12-fpm-bookworm AS base
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY --from=pie-bin /pie /usr/bin/pie
 
-# For other versions check: http://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
+# For other versions check: https://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
 # renovate: datasource=github-tags depName=nginx/nginx extractVersion=^release-(?<version>.*)$
-ARG NGINX_VERSION="1.29.0"
+ARG NGINX_VERSION="1.29.1"
 
 RUN apt-get update \
     && apt-get install --assume-yes gpg \
@@ -21,9 +21,9 @@ RUN apt-get update \
         zip \
         libzip-dev \
         supervisor \
-        cron \
+        libpq-dev \
     && docker-php-ext-install \
-        zip
+        pdo_pgsql 
 
 COPY ./environment/.docker/app/entrypoint.sh /entrypoint.sh
 COPY ./environment/.docker/app/nginx.conf /etc/nginx/nginx.conf
