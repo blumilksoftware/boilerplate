@@ -13,8 +13,9 @@ volumes:
 services:
     app:
         build:
-            context: ./environment/dev/app
-            dockerfile: Dockerfile
+            context: .
+            dockerfile: environment/.docker/app/Dockerfile
+            target: local
             args:
                 - INSTALL_XDEBUG=${DOCKER_INSTALL_XDEBUG:-true}
                 - USER_ID=${DOCKER_HOST_USER_ID:-1000}
@@ -43,11 +44,10 @@ services:
         container_name: example-app-app-dev
         working_dir: /application
         volumes:
-            - ./environment/dev/app/nginx.conf:/etc/nginx/nginx.conf:ro
-            - ./environment/dev/app/php.ini:/usr/local/etc/php/conf.d/zzz-overrides.ini:ro
-            - ./environment/dev/app/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-overrides.conf:ro
-            - ./environment/dev/app/supervisord.conf:/etc/supervisor/custom-supervisord.conf:ro
-            - .:/application
+          - ./environment/local/app/php.ini:/usr/local/etc/php/conf.d/zzz-overrides.ini:ro
+          - ./environment/local/app/php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-overrides.conf:ro
+          - ./environment/local/app/supervisord.conf:/etc/supervisor/custom-supervisord.conf:ro
+          - .:/application
         ports:
             - ${DOCKER_APP_HOST_PORT:-63851}:80
         networks:
