@@ -1,6 +1,6 @@
-FROM registry.blumilk.pl/internal-public/secops-tools-bin:v1.1.0 AS secops-tools-bin
-FROM composer:2.8.12 AS composer
-FROM ghcr.io/php/pie:1.2.1-bin AS pie-bin
+FROM registry.blumilk.pl/internal-public/secops-tools-bin:v1.1.0@sha256:80e61cf01f5465d6353bc4ad07e5940eb0055c572d265c7819e04f37167f8bc8 AS secops-tools-bin
+FROM composer:2.8.12@sha256:adca13b22c7b77f7fc606353453be12ba93e0917c332b8b0fa5efe3a85bf27ab AS composer
+FROM ghcr.io/php/pie:1.2.1-bin@sha256:8599d93b0e12de1deb775612d4311d3993cb95b1aeba841ff0b49bd1f1beb12d AS pie-bin
 FROM node:24.8.0-bookworm-slim AS node
 
 FROM php:8.4.12-fpm-bookworm AS base
