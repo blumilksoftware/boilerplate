@@ -1,16 +1,16 @@
-FROM registry.blumilk.pl/internal-public/secops-tools-bin:v1.1.0 AS secops-tools-bin
-FROM composer:2.8.12 AS composer
-FROM ghcr.io/php/pie:1.2.1-bin AS pie-bin
-FROM node:24.8.0-bookworm-slim AS node
+FROM registry.blumilk.pl/internal-public/secops-tools-bin:v1.2.0@sha256:be2755b1afeeae009abdeeb61b7214776776df5b50c818c1546072563139d12c AS secops-tools-bin
+FROM composer:2.8.12@sha256:5248900ab8b5f7f880c2d62180e40960cd87f60149ec9a1abfd62ac72a02577c AS composer
+FROM ghcr.io/php/pie:1.2.1-bin@sha256:8599d93b0e12de1deb775612d4311d3993cb95b1aeba841ff0b49bd1f1beb12d AS pie-bin
+FROM node:24.10.0-bookworm-slim@sha256:b8d2197aff9129d16c801a3e3e1b2a873c4946480f5a310f38056df2268c38d9 AS node
 
-FROM php:8.4.12-fpm-bookworm AS base
+FROM php:8.4.13-fpm-bookworm@sha256:7d2da5cefa899465565aedf5888b1b55ea72748e53fbe1397e217921add0238f AS base
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY --from=pie-bin /pie /usr/bin/pie
 
 # For other versions check: https://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
 # renovate: datasource=github-tags depName=nginx/nginx extractVersion=^release-(?<version>.*)$
-ARG NGINX_VERSION="1.29.1"
+ARG NGINX_VERSION="1.29.2"
 
 RUN apt-get update \
     && apt-get install --assume-yes gpg \
@@ -61,7 +61,7 @@ RUN ln --symbolic /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/
     && chown --no-dereference ${USER_NAME}:root /usr/local/bin/npx
 
 # renovate: datasource=github-tags depName=xdebug/xdebug
-ARG XDEBUG_VERSION=3.4.5
+ARG XDEBUG_VERSION=3.4.6
 ARG INSTALL_XDEBUG=false
 
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
