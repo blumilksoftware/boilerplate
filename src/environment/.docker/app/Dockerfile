@@ -1,16 +1,16 @@
 FROM registry.blumilk.pl/internal-public/secops-tools-bin:v1.2.0@sha256:be2755b1afeeae009abdeeb61b7214776776df5b50c818c1546072563139d12c AS secops-tools-bin
-FROM composer:2.8.12@sha256:5248900ab8b5f7f880c2d62180e40960cd87f60149ec9a1abfd62ac72a02577c AS composer
-FROM ghcr.io/php/pie:1.2.1-bin@sha256:8599d93b0e12de1deb775612d4311d3993cb95b1aeba841ff0b49bd1f1beb12d AS pie-bin
-FROM node:24.10.0-bookworm-slim@sha256:b8d2197aff9129d16c801a3e3e1b2a873c4946480f5a310f38056df2268c38d9 AS node
+FROM composer:2.9.3@sha256:f746ca10fd351429e13a6fc9599ccd41d4fc413e036ae8b0dad9e2041adcffcd AS composer
+FROM ghcr.io/php/pie:1.3.5-bin@sha256:22847c506640f5e8351850334b009da485c57db6ea245515759968911ae6d348 AS pie-bin
+FROM node:24.12.0-bookworm-slim@sha256:b83af04d005d8e3716f542469a28ad2947ba382f6b4a76ddca0827a21446a540 AS node
 
-FROM php:8.4.13-fpm-bookworm@sha256:7d2da5cefa899465565aedf5888b1b55ea72748e53fbe1397e217921add0238f AS base
+FROM php:8.4.16-fpm-bookworm@sha256:17f936aab6398c83c89a7c234118183004fda951e127c32d798014d30e54d08c AS base
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY --from=pie-bin /pie /usr/bin/pie
 
 # For other versions check: https://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
 # renovate: datasource=github-tags depName=nginx/nginx extractVersion=^release-(?<version>.*)$
-ARG NGINX_VERSION="1.29.2"
+ARG NGINX_VERSION="1.29.4"
 
 RUN apt-get update \
     && apt-get install --assume-yes gpg \
@@ -61,7 +61,7 @@ RUN ln --symbolic /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/
     && chown --no-dereference ${USER_NAME}:root /usr/local/bin/npx
 
 # renovate: datasource=github-tags depName=xdebug/xdebug
-ARG XDEBUG_VERSION=3.4.6
+ARG XDEBUG_VERSION=3.4.7
 ARG INSTALL_XDEBUG=false
 
 RUN if [ ${INSTALL_XDEBUG} = true ]; then \
