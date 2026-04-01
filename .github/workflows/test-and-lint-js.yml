@@ -11,12 +11,16 @@ on:
       - 'src/package.json'
       - 'src/package.lock'
 
+permissions: {}
+
 jobs:
   test-and-lint-js:
     name: Test & lint JS codebase
     timeout-minutes: 10
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     env:
       # renovate: datasource=node-version depName=node
       NODE_VERSION: 24.12.0
