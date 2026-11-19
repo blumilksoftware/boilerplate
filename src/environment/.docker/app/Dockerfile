@@ -10,7 +10,7 @@ COPY --from=pie-bin /pie /usr/bin/pie
 
 # For other versions check: https://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/
 # renovate: datasource=github-tags depName=nginx/nginx extractVersion=^release-(?<version>.*)$
-ARG NGINX_VERSION="1.29.4"
+ARG NGINX_VERSION="1.31.9"
 
 RUN apt-get update \
     && apt-get install --assume-yes gpg \
