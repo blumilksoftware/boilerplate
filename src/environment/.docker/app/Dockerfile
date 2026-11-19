@@ -3,7 +3,7 @@ FROM composer:2.9.3@sha256:f746ca10fd351429e13a6fc9599ccd41d4fc413e036ae8b0dad9e
 FROM ghcr.io/php/pie:1.3.5-bin@sha256:22847c506640f5e8351850334b009da485c57db6ea245515759968911ae6d348 AS pie-bin
 FROM node:24.12.0-bookworm-slim@sha256:b83af04d005d8e3716f542469a28ad2947ba382f6b4a76ddca0827a21446a540 AS node
 
-FROM php:8.4.16-fpm-bookworm@sha256:17f936aab6398c83c89a7c234118183004fda951e127c32d798014d30e54d08c AS base
+FROM php:8.4.27-fpm-bookworm@sha256:b75642e8c89c321039f351466134df951576fb0f7017117b3931e9a19b908d6c AS base
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY --from=pie-bin /pie /usr/bin/pie
